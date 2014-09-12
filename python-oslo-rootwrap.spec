@@ -1,13 +1,14 @@
 %global pypi_name oslo.rootwrap
+%global milestone a2
 
 Name:           python-oslo-rootwrap
-Version:        1.0.0
-Release:        2%{?dist}
+Version:        1.3.0.0
+Release:        0.1.%{milestone}%{?dist}
 Summary:        Oslo Rootwrap
 
 License:        ASL 2.0
 URL:            https://launchpad.net/oslo
-Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        http://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{version}%{milestone}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
@@ -24,7 +25,10 @@ but called as a separate process through the `oslo-rootwrap` command:
 `sudo oslo-rootwrap ROOTWRAP_CONFIG COMMAND_LINE`
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%setup -q -n %{pypi_name}-%{version}%{milestone}
+
+sed -i 's/%{version}%{milestone}/%{version}/' PKG-INFO
+
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -42,12 +46,14 @@ rm -rf %{pypi_name}.egg-info
 
 %files
 %doc README.rst LICENSE
-%{_bindir}/oslo-rootwrap
 %dir %{python_sitelib}/oslo
 %{python_sitelib}/oslo/rootwrap
 %{python_sitelib}/oslo.rootwrap-%{version}*
 
 %changelog
+* Fri Sep 12 2014 Alan Pevec <apevec@redhat.com> - 1.3.0.0-0.1.a2
+- Update to 1.3.0.0a2 milestone
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 

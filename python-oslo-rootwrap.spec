@@ -2,7 +2,7 @@
 
 Name:           python-oslo-rootwrap
 Version:        1.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Oslo Rootwrap
 
 License:        ASL 2.0
@@ -46,6 +46,9 @@ but called as a separate process through the `oslo-rootwrap` command:
 %{python2_sitelib}/*-nspkg.pth
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Tue Mar 31 2015 Alan Pevec <apevec@redhat.com> - 1.6.0-1
 - new version
 

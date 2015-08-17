@@ -1,8 +1,9 @@
 %global pypi_name oslo.rootwrap
+%global milestone a3
 
 Name:           python-oslo-rootwrap
-Version:        1.6.0
-Release:        2%{?dist}
+Version:        2.2.0
+Release:        1%{?dist}
 Summary:        Oslo Rootwrap
 
 License:        ASL 2.0
@@ -40,12 +41,15 @@ but called as a separate process through the `oslo-rootwrap` command:
 %files
 %license LICENSE
 %doc README.rst
-%{python2_sitelib}/oslo
 %{python2_sitelib}/oslo_rootwrap
 %{python2_sitelib}/*.egg-info
-%{python2_sitelib}/*-nspkg.pth
+%{_bindir}/oslo-rootwrap
+%{_bindir}/oslo-rootwrap-daemon
 
 %changelog
+* Tue Aug 18 2015 Alan Pevec <alan.pevec@redhat.com> 2.2.0-1
+- Update to upstream 2.2.0
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 

@@ -12,6 +12,7 @@ Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_na
 BuildArch:      noarch
 
 BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 
 

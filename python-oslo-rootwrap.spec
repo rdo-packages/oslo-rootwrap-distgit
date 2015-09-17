@@ -2,7 +2,7 @@
 %global milestone a3
 
 Name:           python-oslo-rootwrap
-Version:        2.2.0
+Version:        2.3.0
 Release:        1%{?dist}
 Summary:        Oslo Rootwrap
 
@@ -14,6 +14,8 @@ BuildArch:      noarch
 BuildRequires:  python2-devel
 BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
+
+Requires:       python-six >= 1.9.0
 
 
 %description
@@ -48,6 +50,9 @@ but called as a separate process through the `oslo-rootwrap` command:
 %{_bindir}/oslo-rootwrap-daemon
 
 %changelog
+* Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 2.3.0-1
+- Update to upstream 2.3.0
+
 * Tue Aug 18 2015 Alan Pevec <alan.pevec@redhat.com> 2.2.0-1
 - Update to upstream 2.2.0
 

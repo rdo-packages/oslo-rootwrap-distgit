@@ -1,3 +1,5 @@
-# UUID                                  	Group Name
-#
-6e6a3e02a6586c4614c8d7533eaa7142542c15d7	oslo-rootwrap-distgit-ptl
+# UUID          Group Name
+6ddfecad023c6f4fa3ac8c4d2583c502ea675a73 	Non-Interactive Users
+eac586a33f524e040818e97de8364c11d98ba4e3       	oslo-rootwrap-distgit-core
+6e6a3e02a6586c4614c8d7533eaa7142542c15d7        	oslo-rootwrap-distgit-ptl
+global:Registered-Users		Registered Users

@@ -3,7 +3,7 @@
 
 Name:           python-oslo-rootwrap
 Version:        2.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Oslo Rootwrap
 
 License:        ASL 2.0
@@ -50,6 +50,9 @@ but called as a separate process through the `oslo-rootwrap` command:
 %{_bindir}/oslo-rootwrap-daemon
 
 %changelog
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2.3.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 2.3.0-1
 - Update to upstream 2.3.0
 

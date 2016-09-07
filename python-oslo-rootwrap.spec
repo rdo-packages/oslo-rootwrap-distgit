@@ -7,8 +7,8 @@
 %global pkg_name oslo-rootwrap
 
 Name:           python-oslo-rootwrap
-Version:        XXX
-Release:        XXX
+Version:        5.1.0
+Release:        1%{?dist}
 Summary:        Oslo Rootwrap
 
 License:        ASL 2.0
@@ -187,3 +187,6 @@ PYTHONPATH=. %{__python3} setup.py test ||
 %endif
 
 %changelog
+* Thu Sep 08 2016 Haikel Guemar <hguemar@fedoraproject.org> 5.1.0-1
+- Update to 5.1.0
+

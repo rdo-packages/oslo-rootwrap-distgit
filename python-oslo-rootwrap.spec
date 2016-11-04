@@ -7,7 +7,7 @@
 %global pkg_name oslo-rootwrap
 
 Name:           python-oslo-rootwrap
-Version:        5.1.0
+Version:        5.1.1
 Release:        1%{?dist}
 Summary:        Oslo Rootwrap
 
@@ -187,6 +187,9 @@ PYTHONPATH=. %{__python3} setup.py test ||
 %endif
 
 %changelog
+* Fri Nov 04 2016 Alfredo Moralejo <amoralej@redhat.com> 5.1.1-1
+- Update to 5.1.1
+
 * Thu Sep 08 2016 Haikel Guemar <hguemar@fedoraproject.org> 5.1.0-1
 - Update to 5.1.0
 

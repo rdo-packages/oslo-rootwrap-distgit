@@ -13,7 +13,7 @@ Summary:        Oslo Rootwrap
 
 License:        ASL 2.0
 URL:            https://launchpad.net/oslo
-Source0:        https://pypi.io/packages/source/o/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
+Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 BuildArch:      noarch
 
 %package -n python2-%{pkg_name}

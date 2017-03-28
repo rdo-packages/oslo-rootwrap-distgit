@@ -1,6 +1,9 @@
-# UUID                                  	Group Name
-#
-63673ea7f2ae6a5666566b1ea9f14e473d00f5a9	rdo-core
-6e6a3e02a6586c4614c8d7533eaa7142542c15d7	openstack/oslo-rootwrap-distgit-ptl
-eac586a33f524e040818e97de8364c11d98ba4e3	openstack/oslo-rootwrap-distgit-core
-global:Registered-Users                 	Registered Users
+# UUID Group Name
+global:Registered-Users	Registered Users
+4572c517702492251ad622a289176552a8acbbb2	rdo-superusers
+global:Anonymous-Users	Anonymous Users
+05a678d3d4a168e149d5e8a0063bbd1b1c5526da	Administrators
+401cf37bee35d1c809d4d957e55f2a304f8eed69	rdo-provenpackagers
+6ddfecad023c6f4fa3ac8c4d2583c502ea675a73	Non-Interactive Users
+b79445a99d43439e416c531d281e39350fe9206a	openstack/oslo-rootwrap-core
+a92899027966a619ca5e756e55169eec4780149f	openstack/oslo-rootwrap-ptl

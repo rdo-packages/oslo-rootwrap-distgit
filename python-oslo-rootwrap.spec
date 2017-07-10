@@ -187,3 +187,4 @@ PYTHONPATH=. %{__python3} setup.py test ||
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.rootwrap/commit/?id=eb7ef1567da29969ded383f522b27389ad9be11a

@@ -22,6 +22,7 @@ Summary:        Oslo Rootwrap
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
+BuildRequires:  git
 # Required for testing
 BuildRequires:  python-eventlet
 BuildRequires:  python-fixtures
@@ -50,7 +51,7 @@ but called as a separate process through the `oslo-rootwrap` command:
 Summary:        Documentation for Oslo Rootwrap
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
 
 %description -n python-%{pkg_name}-doc
 Documentation for Oslo Rootwrap
@@ -133,7 +134,7 @@ but called as a separate process through the `oslo-rootwrap` command:
 
 
 %prep
-%setup -q -n %{pypi_name}-%{upstream_version}
+%autosetup -n %{pypi_name}-%{upstream_version} -S git
 
 %build
 %py2_build
@@ -142,9 +143,9 @@ but called as a separate process through the `oslo-rootwrap` command:
 %endif
 
 # generate html docs
-sphinx-build doc/source html
+%{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %if 0%{?with_python3}
@@ -169,7 +170,7 @@ PYTHONPATH=. %{__python3} setup.py test ||
 %exclude %{python2_sitelib}/oslo_rootwrap/tests
 
 %files -n python-%{pkg_name}-doc
-%doc html
+%doc doc/build/html
 %license LICENSE
 
 %files -n python2-%{pkg_name}-tests

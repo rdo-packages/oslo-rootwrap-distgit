@@ -2,7 +2,7 @@
 %if 0%{?fedora} >= 24
 %global with_python3 1
 %endif
-
+%global with_doc 1
 %global pypi_name oslo.rootwrap
 %global pkg_name oslo-rootwrap
 
@@ -47,6 +47,7 @@ but called as a separate process through the `oslo-rootwrap` command:
 
 `sudo oslo-rootwrap ROOTWRAP_CONFIG COMMAND_LINE`
 
+%if 0%{?with_doc}
 %package -n python-%{pkg_name}-doc
 Summary:        Documentation for Oslo Rootwrap
 
@@ -55,6 +56,7 @@ BuildRequires:  python-openstackdocstheme
 
 %description -n python-%{pkg_name}-doc
 Documentation for Oslo Rootwrap
+%endif
 
 %package -n python2-%{pkg_name}-tests
 Summary:    Tests for Oslo Rootwrap
@@ -142,10 +144,12 @@ but called as a separate process through the `oslo-rootwrap` command:
 %py3_build
 %endif
 
+%if 0%{?with_doc}
 # generate html docs
 %{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %install
 %if 0%{?with_python3}
@@ -169,9 +173,11 @@ PYTHONPATH=. %{__python3} setup.py test ||
 %{_bindir}/oslo-rootwrap-daemon
 %exclude %{python2_sitelib}/oslo_rootwrap/tests
 
+%if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
 %doc doc/build/html
 %license LICENSE
+%endif
 
 %files -n python2-%{pkg_name}-tests
 %{python2_sitelib}/oslo_rootwrap/tests

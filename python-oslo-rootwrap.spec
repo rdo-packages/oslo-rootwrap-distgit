@@ -24,6 +24,7 @@ BuildRequires:  python2-devel
 BuildRequires:  python-pbr
 BuildRequires:  git
 # Required for testing
+BuildRequires:  iproute
 BuildRequires:  python-eventlet
 BuildRequires:  python-fixtures
 BuildRequires:  python-hacking
@@ -155,10 +156,10 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 # TODO one test is failing here, but not in virtualenv
-PYTHONPATH=. %{__python2} setup.py test ||
+PYTHONPATH=. %{__python2} setup.py test
 %if 0%{?with_python3}
 rm -rf .testrepository
-PYTHONPATH=. %{__python3} setup.py test ||
+PYTHONPATH=. %{__python3} setup.py test
 %endif
 
 %files -n python2-%{pkg_name}

@@ -7,7 +7,7 @@
 %global pkg_name oslo-rootwrap
 
 Name:           python-oslo-rootwrap
-Version:        5.9.0
+Version:        5.9.1
 Release:        1%{?dist}
 Summary:        Oslo Rootwrap
 
@@ -188,6 +188,9 @@ PYTHONPATH=. %{__python3} setup.py test ||
 %endif
 
 %changelog
+* Wed Nov 22 2017 RDO <dev@lists.rdoproject.org> 5.9.1-1
+- Update to 5.9.1
+
 * Fri Aug 11 2017 Alfredo Moralejo <amoralej@redhat.com> 5.9.0-1
 - Update to 5.9.0
 

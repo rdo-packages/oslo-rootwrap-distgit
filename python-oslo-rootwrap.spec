@@ -21,23 +21,28 @@ Summary:        Oslo Rootwrap
 %{?python_provide:%python_provide python2-%{pkg_name}}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr
+BuildRequires:  python2-pbr
 BuildRequires:  git
 # Required for testing
 BuildRequires:  iproute
-BuildRequires:  python-eventlet
-BuildRequires:  python-fixtures
-BuildRequires:  python-hacking
-BuildRequires:  python-mock
-BuildRequires:  python-oslotest
-BuildRequires:  python-six
-BuildRequires:  python-subunit
+BuildRequires:  python2-eventlet
+BuildRequires:  python2-fixtures
+BuildRequires:  python2-hacking
+BuildRequires:  python2-mock
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-six
+BuildRequires:  python2-subunit
+BuildRequires:  python2-testtools
+%if 0%{?fedora} > 0
+BuildRequires:  python2-testrepository
+BuildRequires:  python2-testscenarios
+%else
 BuildRequires:  python-testrepository
 BuildRequires:  python-testscenarios
-BuildRequires:  python-testtools
+%endif
 
 
-Requires:       python-six >= 1.9.0
+Requires:       python2-six >= 1.10.0
 
 %description -n python2-%{pkg_name}
 The Oslo Rootwrap allows fine filtering of shell commands to run as `root`
@@ -52,8 +57,8 @@ but called as a separate process through the `oslo-rootwrap` command:
 %package -n python-%{pkg_name}-doc
 Summary:        Documentation for Oslo Rootwrap
 
-BuildRequires:  python-sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-openstackdocstheme
 
 %description -n python-%{pkg_name}-doc
 Documentation for Oslo Rootwrap
@@ -62,16 +67,21 @@ Documentation for Oslo Rootwrap
 %package -n python2-%{pkg_name}-tests
 Summary:    Tests for Oslo Rootwrap
 
-Requires:       python-%{pkg_name} = %{version}-%{release}
-Requires:       python-eventlet
-Requires:       python-fixtures
-Requires:       python-hacking
-Requires:       python-mock
-Requires:       python-oslotest
-Requires:       python-subunit
+Requires:       python2-%{pkg_name} = %{version}-%{release}
+Requires:       python2-eventlet
+Requires:       python2-fixtures
+Requires:       python2-hacking
+Requires:       python2-mock
+Requires:       python2-oslotest
+Requires:       python2-subunit
+Requires:       python2-testtools
+%if 0%{?fedora} > 0
+Requires:       python2-testrepository
+Requires:       python2-testscenarios
+%else
 Requires:       python-testrepository
 Requires:       python-testscenarios
-Requires:       python-testtools
+%endif
 
 %description -n python2-%{pkg_name}-tests
 Tests for the Oslo Log handling library.
@@ -96,7 +106,7 @@ BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 
 
-Requires:       python3-six >= 1.9.0
+Requires:       python3-six >= 1.10.0
 
 %description -n python3-%{pkg_name}
 The Oslo Rootwrap allows fine filtering of shell commands to run as `root`

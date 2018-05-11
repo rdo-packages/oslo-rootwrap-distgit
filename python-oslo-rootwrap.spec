@@ -169,7 +169,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %py2_install
 
 %check
-# TODO one test is failing here, but not in virtualenv
+export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
 PYTHONPATH=. %{__python2} setup.py test
 %if 0%{?with_python3}
 rm -rf .testrepository

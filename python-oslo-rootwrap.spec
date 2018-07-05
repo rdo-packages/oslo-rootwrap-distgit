@@ -31,6 +31,7 @@ BuildRequires:  python2-hacking
 BuildRequires:  python2-mock
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-six
+BuildRequires:  python2-stestr
 BuildRequires:  python2-subunit
 BuildRequires:  python2-testtools
 %if 0%{?fedora} > 0
@@ -74,6 +75,7 @@ Requires:       python2-hacking
 Requires:       python2-mock
 Requires:       python2-oslotest
 Requires:       python2-subunit
+Requires:       python2-stestr
 Requires:       python2-testtools
 %if 0%{?fedora} > 0
 Requires:       python2-testrepository
@@ -100,6 +102,7 @@ BuildRequires:  python3-hacking
 BuildRequires:  python3-mock
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-six
+BuildRequires:  python3-stestr
 BuildRequires:  python3-subunit
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-testscenarios
@@ -126,6 +129,7 @@ Requires:       python3-fixtures
 Requires:       python3-hacking
 Requires:       python3-mock
 Requires:       python3-oslotest
+Requires:       python3-stestr
 Requires:       python3-subunit
 Requires:       python3-testrepository
 Requires:       python3-testscenarios
@@ -169,12 +173,13 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %py2_install
 
 %check
-export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
-PYTHONPATH=. %{__python2} setup.py test
+#export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
+export PYTHONPATH=.
+export OS_TEST_PATH="./oslo_rootwrap/tests"
 %if 0%{?with_python3}
-rm -rf .testrepository
-PYTHONPATH=. %{__python3} setup.py test
+stestr-3 --test-path $OS_TEST_PATH run
 %endif
+stestr --test-path $OS_TEST_PATH run
 
 %files -n python2-%{pkg_name}
 %doc README.rst LICENSE

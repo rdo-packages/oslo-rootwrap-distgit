@@ -117,7 +117,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 #export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
 export PYTHONPATH=.
 export OS_TEST_PATH="./oslo_rootwrap/tests"
-stestr-%{pyver} --test-path $OS_TEST_PATH run
+PYTHON=%{pyver_bin} stestr-%{pyver} --test-path $OS_TEST_PATH run
 
 %files -n python%{pyver}-%{pkg_name}
 %doc README.rst LICENSE

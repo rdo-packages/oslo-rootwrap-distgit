@@ -7,7 +7,7 @@
 %global pkg_name oslo-rootwrap
 
 Name:           python-oslo-rootwrap
-Version:        5.14.1
+Version:        5.14.2
 Release:        1%{?dist}
 Summary:        Oslo Rootwrap
 
@@ -210,6 +210,9 @@ stestr --test-path $OS_TEST_PATH run
 %endif
 
 %changelog
+* Mon Jan 13 2020 RDO <dev@lists.rdoproject.org> 5.14.2-1
+- Update to 5.14.2
+
 * Thu Aug 02 2018 RDO <dev@lists.rdoproject.org> 5.14.1-1
 - Update to 5.14.1
 

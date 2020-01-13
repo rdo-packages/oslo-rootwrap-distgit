@@ -15,7 +15,7 @@
 %global pkg_name oslo-rootwrap
 
 Name:           python-oslo-rootwrap
-Version:        5.15.2
+Version:        5.15.3
 Release:        1%{?dist}
 Summary:        Oslo Rootwrap
 
@@ -137,6 +137,9 @@ stestr-%{pyver} --test-path $OS_TEST_PATH run
 %{pyver_sitelib}/oslo_rootwrap/tests
 
 %changelog
+* Mon Jan 13 2020 RDO <dev@lists.rdoproject.org> 5.15.3-1
+- Update to 5.15.3
+
 * Tue Mar 12 2019 RDO <dev@lists.rdoproject.org> 5.15.2-1
 - Update to 5.15.2
 

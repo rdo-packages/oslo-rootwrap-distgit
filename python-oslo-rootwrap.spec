@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global with_doc 1
 %global pypi_name oslo.rootwrap
@@ -24,33 +13,31 @@ URL:            https://launchpad.net/oslo
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 BuildArch:      noarch
 
-%package -n python%{pyver}-%{pkg_name}
+%package -n python3-%{pkg_name}
 Summary:        Oslo Rootwrap
-%{?python_provide:%python_provide python%{pyver}-%{pkg_name}}
-%if %{pyver} == 3
+%{?python_provide:%python_provide python3-%{pkg_name}}
 Obsoletes: python2-%{pkg_name} < %{version}-%{release}
-%endif
 
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-pbr
+BuildRequires:  python3-devel
+BuildRequires:  python3-pbr
 BuildRequires:  git
 # Required for testing
 BuildRequires:  iproute
-BuildRequires:  python%{pyver}-eventlet
-BuildRequires:  python%{pyver}-fixtures
-BuildRequires:  python%{pyver}-hacking
-BuildRequires:  python%{pyver}-mock
-BuildRequires:  python%{pyver}-oslotest
-BuildRequires:  python%{pyver}-six
-BuildRequires:  python%{pyver}-stestr
-BuildRequires:  python%{pyver}-subunit
-BuildRequires:  python%{pyver}-testtools
-BuildRequires:  python%{pyver}-testscenarios
+BuildRequires:  python3-eventlet
+BuildRequires:  python3-fixtures
+BuildRequires:  python3-hacking
+BuildRequires:  python3-mock
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-six
+BuildRequires:  python3-stestr
+BuildRequires:  python3-subunit
+BuildRequires:  python3-testtools
+BuildRequires:  python3-testscenarios
 
 
-Requires:       python%{pyver}-six >= 1.10.0
+Requires:       python3-six >= 1.10.0
 
-%description -n python%{pyver}-%{pkg_name}
+%description -n python3-%{pkg_name}
 The Oslo Rootwrap allows fine filtering of shell commands to run as `root`
 from OpenStack services.
 
@@ -63,28 +50,28 @@ but called as a separate process through the `oslo-rootwrap` command:
 %package -n python-%{pkg_name}-doc
 Summary:        Documentation for Oslo Rootwrap
 
-BuildRequires:  python%{pyver}-sphinx
-BuildRequires:  python%{pyver}-openstackdocstheme
+BuildRequires:  python3-sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-%{pkg_name}-doc
 Documentation for Oslo Rootwrap
 %endif
 
-%package -n python%{pyver}-%{pkg_name}-tests
+%package -n python3-%{pkg_name}-tests
 Summary:    Tests for Oslo Rootwrap
 
-Requires:       python%{pyver}-%{pkg_name} = %{version}-%{release}
-Requires:       python%{pyver}-eventlet
-Requires:       python%{pyver}-fixtures
-Requires:       python%{pyver}-hacking
-Requires:       python%{pyver}-mock
-Requires:       python%{pyver}-oslotest
-Requires:       python%{pyver}-subunit
-Requires:       python%{pyver}-stestr
-Requires:       python%{pyver}-testtools
-Requires:       python%{pyver}-testscenarios
+Requires:       python3-%{pkg_name} = %{version}-%{release}
+Requires:       python3-eventlet
+Requires:       python3-fixtures
+Requires:       python3-hacking
+Requires:       python3-mock
+Requires:       python3-oslotest
+Requires:       python3-subunit
+Requires:       python3-stestr
+Requires:       python3-testtools
+Requires:       python3-testscenarios
 
-%description -n python%{pyver}-%{pkg_name}-tests
+%description -n python3-%{pkg_name}-tests
 Tests for the Oslo Log handling library.
 
 %description
@@ -101,31 +88,31 @@ but called as a separate process through the `oslo-rootwrap` command:
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %if 0%{?with_doc}
 # generate html docs
-sphinx-build-%{pyver} -b html doc/source doc/build/html
-# remove the sphinx-build-%{pyver} leftovers
+sphinx-build-3 -b html doc/source doc/build/html
+# remove the sphinx-build-3 leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %install
-%{pyver_install}
+%{py3_install}
 
 %check
 #export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
 export PYTHONPATH=.
 export OS_TEST_PATH="./oslo_rootwrap/tests"
-PYTHON=%{pyver_bin} stestr-%{pyver} --test-path $OS_TEST_PATH run
+PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run
 
-%files -n python%{pyver}-%{pkg_name}
+%files -n python3-%{pkg_name}
 %doc README.rst LICENSE
-%{pyver_sitelib}/oslo_rootwrap
-%{pyver_sitelib}/*.egg-info
+%{python3_sitelib}/oslo_rootwrap
+%{python3_sitelib}/*.egg-info
 %{_bindir}/oslo-rootwrap
 %{_bindir}/oslo-rootwrap-daemon
-%exclude %{pyver_sitelib}/oslo_rootwrap/tests
+%exclude %{python3_sitelib}/oslo_rootwrap/tests
 
 %if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
@@ -133,7 +120,7 @@ PYTHON=%{pyver_bin} stestr-%{pyver} --test-path $OS_TEST_PATH run
 %license LICENSE
 %endif
 
-%files -n python%{pyver}-%{pkg_name}-tests
-%{pyver_sitelib}/oslo_rootwrap/tests
+%files -n python3-%{pkg_name}-tests
+%{python3_sitelib}/oslo_rootwrap/tests
 
 %changelog

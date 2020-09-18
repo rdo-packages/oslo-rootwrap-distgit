@@ -4,8 +4,8 @@
 %global pkg_name oslo-rootwrap
 
 Name:           python-oslo-rootwrap
-Version:        XXX
-Release:        XXX
+Version:        6.2.0
+Release:        1%{?dist}
 Summary:        Oslo Rootwrap
 
 License:        ASL 2.0
@@ -124,3 +124,6 @@ PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run
 %{python3_sitelib}/oslo_rootwrap/tests
 
 %changelog
+* Fri Sep 18 2020 RDO <dev@lists.rdoproject.org> 6.2.0-1
+- Update to 6.2.0
+

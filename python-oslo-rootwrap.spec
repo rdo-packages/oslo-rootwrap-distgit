@@ -141,3 +141,4 @@ PYTHON=python3 stestr-3 --test-path $OS_TEST_PATH run
 %{python3_sitelib}/oslo_rootwrap/tests
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.rootwrap/commit/?id=ed1659a5e30967edecc98ff085578e7577151aef

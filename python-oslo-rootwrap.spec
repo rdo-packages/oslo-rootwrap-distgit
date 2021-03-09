@@ -48,7 +48,6 @@ BuildRequires:  python3-testtools
 BuildRequires:  python3-testscenarios
 
 
-Requires:       python3-six >= 1.10.0
 
 %description -n python3-%{pkg_name}
 The Oslo Rootwrap allows fine filtering of shell commands to run as `root`

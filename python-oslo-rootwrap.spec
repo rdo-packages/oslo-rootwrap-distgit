@@ -13,8 +13,8 @@
 %global pkg_name oslo-rootwrap
 
 Name:           python-oslo-rootwrap
-Version:        XXX
-Release:        XXX
+Version:        7.1.0
+Release:        1%{?dist}
 Summary:        Oslo Rootwrap
 
 License:        Apache-2.0
@@ -151,3 +151,6 @@ export OS_TEST_PATH="./oslo_rootwrap/tests"
 %{python3_sitelib}/oslo_rootwrap/tests
 
 %changelog
+* Fri Sep 01 2023 RDO <dev@lists.rdoproject.org> 7.1.0-1
+- Update to 7.1.0
+
